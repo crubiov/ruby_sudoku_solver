@@ -83,7 +83,7 @@ module SudokuSolver
           validate_puzzle!(puzzle)
           # Create cells from puzzle string
           puzzle.chars.each_with_index.map do |char, i|
-            value = ['0', '.'].include?(char) ? nil : char.to_i
+            value = char == '0' ? nil : char.to_i
             Cell.new(row: i / 9, col: i % 9, value: value)
           end
         end
@@ -91,9 +91,9 @@ module SudokuSolver
 
       def validate_puzzle!(puzzle)
         raise ArgumentError, 'Puzzle must be exactly 81 characters' unless puzzle.length == 81
-        return if puzzle.match?(/\A[0-9.]+\z/)
+        return if puzzle.match?(/\A[0-9]+\z/)
 
-        raise ArgumentError, 'Puzzle must contain only digits 0-9 or dots'
+        raise ArgumentError, 'Puzzle must contain only digits 0-9'
       end
 
       def validate_index!(index, name)

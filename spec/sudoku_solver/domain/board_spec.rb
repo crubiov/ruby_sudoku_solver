@@ -30,7 +30,7 @@ RSpec.describe SudokuSolver::Domain::Board do
     it 'raises error for invalid characters' do
       expect do
         described_class.new('a' * 81)
-      end.to raise_error(ArgumentError, 'Puzzle must contain only digits 0-9 or dots')
+      end.to raise_error(ArgumentError, 'Puzzle must contain only digits 0-9')
     end
   end
 
