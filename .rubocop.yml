@@ -1,0 +1,53 @@
+AllCops:
+  TargetRubyVersion: 3.0
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+
+# Allow empty files during initial development
+Lint/EmptyFile:
+  Enabled: false
+
+# Documentation can be added later when code stabilizes
+Style/Documentation:
+  Enabled: false
+
+# Allow longer lines for readability
+Layout/LineLength:
+  Max: 120
+
+# Relaxed metrics during initial development
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# Spec files can have longer blocks
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+# Allow non-predicate methods that don't end with ?
+Naming/PredicateMethod:
+  Enabled: false
+
+# Prefer modern Ruby hash syntax
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+# Frozen string literal pragma
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
