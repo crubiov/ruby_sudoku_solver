@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'set'
+
 module SudokuSolver
   module Domain
     # Represents a single cell in a Sudoku puzzle

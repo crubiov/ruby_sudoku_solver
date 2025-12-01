@@ -17,7 +17,7 @@ RSpec.configure do |config|
     expectations.syntax = :expect
   end
 
-  # Use the `should` syntax is disabled
+  # The `should` syntax is disabled
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
     mocks.syntax = :expect
