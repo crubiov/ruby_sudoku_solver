@@ -33,12 +33,12 @@
 - **FileReader class**: Fully implemented with 14 tests, 100% coverage
 
 ### 🚧 In Progress
-- **Phase 1**: Foundation & Core Models (95% complete)
+- **Phase 1**: Foundation & Core Models (100% complete)
   - ✅ Setup complete
   - ✅ Cell implemented
   - ✅ Board implemented
   - ✅ FileReader implemented
-  - ⏳ Example puzzles pending (will be added by user after development)
+  - ✅ Example puzzles created (easy.txt, medium.txt, hard.txt, expert.txt)
 
 ### 📋 Current File Structure
 
@@ -71,14 +71,13 @@ ruby_sudoku_solver/
 │       │   └── file_reader_spec.rb ✅
 │       └── strategies/
 ├── main.rb (empty)
-└── puzzles/ (empty - user will add custom puzzles)
+├── puzzles/ (contains simple.txt, easy.txt, medium.txt, hard.txt, expert.txt, advanced.txt, last_resort.txt)
 ```
 
 ### 🎯 Immediate Next Steps
 
-1. Complete Phase 1 by starting Phase 2: Solver Engine & Strategies
-2. Merge Phase 1 to main branch
-3. Begin Phase 2 development
+1. Begin Phase 2: Solver Engine & Strategies
+2. Merge Phase 1 to main branch when Phase 2 is ready
 
 ---
 
@@ -251,15 +250,15 @@ ruby_sudoku_solver/
 
 ### Strategy Difficulty Levels
 
-| Level | Rating | Strategies |
-|-------|--------|------------|
-| 1 | Simple | Naked Single, Hidden Single |
-| 2 | Easy | Naked/Hidden Pairs, Pointing Pairs |
-| 3 | Medium | Triples/Quads, Box/Line Reduction |
-| 4 | Hard | X-Wing, Swordfish, XY-Wing |
-| 5 | Expert | Coloring, Y-Wing, W-Wing |
-| 6 | Advanced | Chains, ALS |
-| 7 | Last Resort | Backtracking |
+| Level | File | Clues | Rating | Strategies |
+|-------|------|-------|--------|------------|
+| 1 | simple.txt | 30 | Simple | Naked Single, Hidden Single |
+| 2 | easy.txt | 30 | Easy | Naked/Hidden Pairs, Pointing Pairs |
+| 3 | medium.txt | 21 | Medium | Triples/Quads, Box/Line Reduction |
+| 4 | hard.txt | 15 | Hard | X-Wing, Swordfish, XY-Wing |
+| 5 | expert.txt | 2 | Expert | Coloring, Y-Wing, W-Wing |
+| 6 | advanced.txt | 8 | Advanced | Chains, ALS |
+| 7 | last_resort.txt | 1 | Last Resort | Backtracking |
 
 ### Key Class Responsibilities
 
@@ -280,6 +279,7 @@ ruby_sudoku_solver/
 - [x] Board class + tests (24 tests, 100% coverage)
 - [x] FileReader + tests (14 tests, 100% coverage)
 - [x] Temporary test files instead of puzzles/ directory
+- [x] Example puzzles for all 7 difficulty levels (simple, easy, medium, hard, expert, advanced, last_resort)
 
 ### Phase 2: Solver Engine
 - [ ] BaseStrategy + tests
@@ -310,7 +310,7 @@ ruby_sudoku_solver/
 - Integration tests: Real puzzles end-to-end
 - Target: >95% code coverage
 
-**Current Status**: 63 tests passing, 100% code coverage ✅
+**Current Status**: 63 tests passing, 100% code coverage ✅ ✅
 
 ---
 
@@ -361,7 +361,7 @@ ruby_sudoku_solver/
 ## Progress Tracking
 
 **Total Estimated Time**: 55-70 hours
-**Current Phase**: Phase 1 (95%+ complete)
+**Current Phase**: Phase 1 (100% complete) ✅
 **Time Spent**: ~5-6 hours
 **Last Updated**: December 1, 2025
 
@@ -369,7 +369,7 @@ ruby_sudoku_solver/
 
 | Phase | Estimated | Actual | Notes |
 |-------|-----------|--------|-------|
-| 1 | 6-8h | ~5-6h ✅ | Cell, Board & FileReader complete |
+| 1 | 6-8h | ~5-6h ✅ | Cell, Board, FileReader & example puzzles complete |
 | 2 | 6-8h | - | - |
 | 3 | 8-10h | - | - |
 | 4 | 10-12h | - | - |
