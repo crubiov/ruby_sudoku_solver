@@ -118,7 +118,7 @@ RSpec.describe SudokuSolver::Domain::Cell do
       given_cell = described_class.new(row: 0, col: 0, value: 5)
       expect do
         given_cell.remove_candidate(5)
-      end.to raise_error(StandardError, 'Cannot modify given cell')
+      end.to raise_error(SudokuSolver::Domain::ImmutableCellError, 'Cannot modify given cell')
     end
   end
 
@@ -135,7 +135,7 @@ RSpec.describe SudokuSolver::Domain::Cell do
       given_cell = described_class.new(row: 0, col: 0, value: 3)
       expect do
         given_cell.value = 5
-      end.to raise_error(StandardError, 'Cannot modify given cell')
+      end.to raise_error(SudokuSolver::Domain::ImmutableCellError, 'Cannot modify given cell')
     end
 
     it 'raises error for invalid value' do

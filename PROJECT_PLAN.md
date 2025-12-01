@@ -4,7 +4,7 @@
 
 **Learning Objectives**: Master Ruby programming while applying SOLID principles and software engineering best practices.
 
-**Last Updated**: December 1, 2025 (PR Review fixes applied)
+**Last Updated**: December 1, 2025 (PR Review fixes applied - part 2)
 
 ---
 
@@ -31,6 +31,7 @@
 - **Cell class**: Fully implemented with 25 tests, 100% coverage
 - **Board class**: Fully implemented with 24 tests, 100% coverage
 - **FileReader class**: Fully implemented with 14 tests, 100% coverage
+- **Exception classes**: Custom domain exceptions (DomainError, ImmutableCellError, InvalidValueError)
 
 ### 🚧 In Progress
 - **Phase 1**: Foundation & Core Models (100% complete)
@@ -40,6 +41,7 @@
   - ✅ FileReader implemented
   - ✅ Example puzzles created (simple.txt, easy.txt, medium.txt, hard.txt, expert.txt, advanced.txt, last_resort.txt)
   - ✅ PR Review fixes applied (require 'set', distinct puzzles, grammar fixes)
+  - ✅ Refactored with custom exceptions and Files module migration
 
 ### 📋 Current File Structure
 
@@ -56,8 +58,9 @@ ruby_sudoku_solver/
 │   └── sudoku_solver/
 │       ├── domain/
 │       │   ├── board.rb ✅
-│       │   └── cell.rb ✅
-│       ├── io/
+│       │   ├── cell.rb ✅
+│       │   └── errors.rb ✅
+│       ├── files/
 │       │   └── file_reader.rb ✅
 │       └── strategies/
 │           ├── base_strategy.rb (empty - Phase 2)
@@ -67,8 +70,9 @@ ruby_sudoku_solver/
 │   └── sudoku_solver/
 │       ├── domain/
 │       │   ├── board_spec.rb ✅
-│       │   └── cell_spec.rb ✅
-│       ├── io/
+│       │   ├── cell_spec.rb ✅
+│       │   └── errors_spec.rb ✅
+│       ├── files/
 │       │   └── file_reader_spec.rb ✅
 │       └── strategies/
 ├── main.rb (empty)
@@ -120,13 +124,20 @@ ruby_sudoku_solver/
 - [x] Implement FileReader (TDD)
 - [x] Implement FileReader tests with temporary files
 - [x] Create example puzzles for each difficulty level
+- [x] Create custom exception classes (Domain, ImmutableCell, InvalidValue)
+- [x] Rename IO module to Files module (avoid constant collision)
+- [x] Address Copilot PR review feedback
 
 **Deliverables**: Cell, Board, FileReader with comprehensive tests
 
 **Success Criteria**: ✅ Can load puzzle from file, all tests passing, RuboCop clean, 100% coverage, example puzzles created
 
 **Test Summary**:
+- Cell: 27 tests, 100% coverage (includes ImmutableCellError tests)
+- Board: 24 tests, 100% coverage
 - FileReader: 14 tests, 100% coverage
+- Exception classes: 4 tests, 100% coverage
+- Total: 69 tests, 100% coverage
 - Handles single-line format (81 chars)
 - Handles multi-line format (9 lines × 9 chars max)
 - Ignores comment lines after puzzle data
@@ -370,7 +381,7 @@ ruby_sudoku_solver/
 
 | Phase | Estimated | Actual | Notes |
 |-------|-----------|--------|-------|
-| 1 | 6-8h | ~5-6h ✅ | Cell, Board, FileReader & example puzzles complete |
+| 1 | 6-8h | ~6-7h ✅ | Cell, Board, FileReader, exceptions, puzzles, PR review fixes |
 | 2 | 6-8h | - | - |
 | 3 | 8-10h | - | - |
 | 4 | 10-12h | - | - |
@@ -385,7 +396,7 @@ ruby_sudoku_solver/
 
 ### Key Decisions
 
-1. **Directory Structure**: domain/, io/, strategies/ (SRP)
+1. **Directory Structure**: domain/, files/, strategies/ (SRP - renamed from io/ to avoid IO constant collision)
 2. **Strategy Pattern**: Separate class per technique (OCP)
 3. **TDD**: Tests before implementation
 4. **Composition over Inheritance** (per AGENTS.md)
@@ -395,6 +406,8 @@ ruby_sudoku_solver/
 8. **Test files**: Use temporary directories (`Dir.mktmpdir`) instead of puzzles/ directory
 9. **Empty cells**: Non-1-9 characters converted to '0' during parsing
 10. **File format flexibility**: Support both single-line (81 chars) and multi-line (9×9) formats with comment lines ignored
+11. **Exception handling**: Custom domain exceptions (DomainError, ImmutableCellError, InvalidValueError) for better error handling
+12. **Module naming**: Use Files instead of IO to avoid collision with Ruby's core IO constant
 
 ### Future Enhancements
 

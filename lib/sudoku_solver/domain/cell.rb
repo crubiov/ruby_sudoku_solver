@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'set'
+require 'sudoku_solver/domain/errors'
 
 module SudokuSolver
   module Domain
@@ -42,14 +43,14 @@ module SudokuSolver
 
       # Remove a candidate from this cell
       def remove_candidate(candidate)
-        raise 'Cannot modify given cell' if given?
+        raise ImmutableCellError, 'Cannot modify given cell' if given?
 
         @candidates.delete?(candidate) || false
       end
 
       # Set the value of this cell
       def value=(new_value)
-        raise 'Cannot modify given cell' if given?
+        raise ImmutableCellError, 'Cannot modify given cell' if given?
 
         validate_value!(new_value)
         @value = new_value

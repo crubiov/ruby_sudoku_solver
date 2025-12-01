@@ -1,5 +1,5 @@
 module SudokuSolver
-  module IO
+  module Files
     class FileReader
       PUZZLE_SIZE = 81
 

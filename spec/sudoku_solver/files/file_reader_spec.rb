@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'tmpdir'
 require 'fileutils'
 
-RSpec.describe SudokuSolver::IO::FileReader do
+RSpec.describe SudokuSolver::Files::FileReader do
   let(:temp_dir) { Dir.mktmpdir }
 
   after { FileUtils.rm_rf(temp_dir) }
