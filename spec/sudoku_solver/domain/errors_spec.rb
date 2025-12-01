@@ -8,7 +8,9 @@ RSpec.describe SudokuSolver::Domain::DomainError do
   end
 
   it 'can be raised and caught' do
-    expect { raise SudokuSolver::Domain::DomainError, 'test error' }.to raise_error(SudokuSolver::Domain::DomainError, 'test error')
+    expect do
+      raise SudokuSolver::Domain::DomainError, 'test error'
+    end.to raise_error(SudokuSolver::Domain::DomainError, 'test error')
   end
 end
 
@@ -18,7 +20,10 @@ RSpec.describe SudokuSolver::Domain::ImmutableCellError do
   end
 
   it 'can be raised and caught' do
-    expect { raise SudokuSolver::Domain::ImmutableCellError, 'cell is immutable' }.to raise_error(SudokuSolver::Domain::ImmutableCellError, 'cell is immutable')
+    expect do
+      raise SudokuSolver::Domain::ImmutableCellError,
+            'cell is immutable'
+    end.to raise_error(SudokuSolver::Domain::ImmutableCellError, 'cell is immutable')
   end
 end
 
@@ -28,6 +33,9 @@ RSpec.describe SudokuSolver::Domain::InvalidValueError do
   end
 
   it 'can be raised and caught' do
-    expect { raise SudokuSolver::Domain::InvalidValueError, 'invalid value' }.to raise_error(SudokuSolver::Domain::InvalidValueError, 'invalid value')
+    expect do
+      raise SudokuSolver::Domain::InvalidValueError,
+            'invalid value'
+    end.to raise_error(SudokuSolver::Domain::InvalidValueError, 'invalid value')
   end
 end

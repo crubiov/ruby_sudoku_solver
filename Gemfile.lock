@@ -57,8 +57,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rspec (~> 3.12)
-  rubocop (~> 1.56)
+  rspec (~> 3.13)
+  rubocop (~> 1.81)
   simplecov (~> 0.22)
 
 RUBY VERSION
