@@ -4,7 +4,7 @@
 
 **Learning Objectives**: Master Ruby programming while applying SOLID principles and software engineering best practices.
 
-**Last Updated**: December 1, 2025
+**Last Updated**: December 1, 2025 (PR Review fixes applied)
 
 ---
 
@@ -38,7 +38,8 @@
   - ✅ Cell implemented
   - ✅ Board implemented
   - ✅ FileReader implemented
-  - ✅ Example puzzles created (easy.txt, medium.txt, hard.txt, expert.txt)
+  - ✅ Example puzzles created (simple.txt, easy.txt, medium.txt, hard.txt, expert.txt, advanced.txt, last_resort.txt)
+  - ✅ PR Review fixes applied (require 'set', distinct puzzles, grammar fixes)
 
 ### 📋 Current File Structure
 
