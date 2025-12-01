@@ -4,7 +4,7 @@
 
 **Learning Objectives**: Master Ruby programming while applying SOLID principles and software engineering best practices.
 
-**Last Updated**: November 27, 2025
+**Last Updated**: December 1, 2025
 
 ---
 
@@ -30,14 +30,15 @@
 - Development environment setup (Gemfile, RSpec, RuboCop)
 - **Cell class**: Fully implemented with 25 tests, 100% coverage
 - **Board class**: Fully implemented with 24 tests, 100% coverage
+- **FileReader class**: Fully implemented with 14 tests, 100% coverage
 
 ### 🚧 In Progress
-- **Phase 1**: Foundation & Core Models (60% complete)
+- **Phase 1**: Foundation & Core Models (95% complete)
   - ✅ Setup complete
   - ✅ Cell implemented
   - ✅ Board implemented
-  - ⏳ FileReader pending
-  - ⏳ Example puzzles pending
+  - ✅ FileReader implemented
+  - ⏳ Example puzzles pending (will be added by user after development)
 
 ### 📋 Current File Structure
 
@@ -56,7 +57,7 @@ ruby_sudoku_solver/
 │       │   ├── board.rb ✅
 │       │   └── cell.rb ✅
 │       ├── io/
-│       │   └── file_reader.rb (empty - next task)
+│       │   └── file_reader.rb ✅
 │       └── strategies/
 │           ├── base_strategy.rb (empty - Phase 2)
 │           └── naked_single_strategy.rb (empty - Phase 2)
@@ -66,16 +67,18 @@ ruby_sudoku_solver/
 │       ├── domain/
 │       │   ├── board_spec.rb ✅
 │       │   └── cell_spec.rb ✅
+│       ├── io/
+│       │   └── file_reader_spec.rb ✅
 │       └── strategies/
 ├── main.rb (empty)
-└── puzzles/ (empty - next task)
+└── puzzles/ (empty - user will add custom puzzles)
 ```
 
 ### 🎯 Immediate Next Steps
 
-1. Implement FileReader class with TDD (1-2 hours)
-2. Create example puzzle files (30 min)
-3. Complete Phase 1 and merge to main
+1. Complete Phase 1 by starting Phase 2: Solver Engine & Strategies
+2. Merge Phase 1 to main branch
+3. User to add puzzle files to puzzles/ directory as needed
 
 ---
 
@@ -106,20 +109,30 @@ ruby_sudoku_solver/
 
 ## Development Phases
 
-### Phase 1: Foundation & Core Models (6-8 hours) - 60% Complete
+### Phase 1: Foundation & Core Models (6-8 hours) - ✅ Complete
 
-**Status**: 🚧 In Progress
+**Status**: ✅ Complete (95%+ - Only user puzzle files pending)
 
 **Tasks**:
 - [x] Setup: Gemfile, RSpec, RuboCop
 - [x] Implement Cell class (TDD)
 - [x] Implement Board class (TDD)
-- [ ] Implement FileReader (TDD)
-- [ ] Create example puzzles
+- [x] Implement FileReader (TDD)
+- [x] Implement FileReader tests with temporary files
+- [ ] User to add example puzzles to puzzles/ directory
 
 **Deliverables**: Cell, Board, FileReader with comprehensive tests
 
-**Success Criteria**: Can load puzzle from file, all tests passing, RuboCop clean
+**Success Criteria**: ✅ Can load puzzle from file, all tests passing, RuboCop clean, 100% coverage
+
+**Test Summary**:
+- FileReader: 14 tests, 100% coverage
+- Handles single-line format (81 chars)
+- Handles multi-line format (9 lines × 9 chars max)
+- Ignores comment lines after puzzle data
+- Converts non-1-9 characters to empty cells ('0')
+- Pads short lines with '0'
+- Comprehensive error handling
 
 ---
 
@@ -226,9 +239,15 @@ ruby_sudoku_solver/
 
 ### File Formats Supported
 
-**Compact**: 9 lines, 9 chars each (0 = empty)
-**Single line**: 81 characters
-**Formatted**: With pipes and dashes as separators
+**Single-line**: 81 characters (first line only, rest ignored as comments)
+- Digits 1-9 = filled cells
+- Any other character (0, spaces, letters, etc.) = empty cell
+
+**Multi-line**: 9 lines with up to 9 characters each (first 9 lines only, rest ignored as comments)
+- Digits 1-9 = filled cells
+- Any other character (0, spaces, letters, etc.) = empty cell
+- Lines < 9 chars padded with '0'
+- Newlines removed during parsing
 
 ### Strategy Difficulty Levels
 
@@ -259,8 +278,8 @@ ruby_sudoku_solver/
 - [x] Gemfile, RSpec, RuboCop
 - [x] Cell class + tests (25 tests, 100% coverage)
 - [x] Board class + tests (24 tests, 100% coverage)
-- [ ] FileReader + tests
-- [ ] Example puzzles
+- [x] FileReader + tests (14 tests, 100% coverage)
+- [x] Temporary test files instead of puzzles/ directory
 
 ### Phase 2: Solver Engine
 - [ ] BaseStrategy + tests
@@ -291,7 +310,7 @@ ruby_sudoku_solver/
 - Integration tests: Real puzzles end-to-end
 - Target: >95% code coverage
 
-**Current Status**: 49 tests passing, 100% coverage
+**Current Status**: 63 tests passing, 100% code coverage ✅
 
 ---
 
@@ -342,15 +361,15 @@ ruby_sudoku_solver/
 ## Progress Tracking
 
 **Total Estimated Time**: 55-70 hours
-**Current Phase**: Phase 1 (60% complete)
-**Time Spent**: ~4-5 hours
-**Last Updated**: November 27, 2025
+**Current Phase**: Phase 1 (95%+ complete)
+**Time Spent**: ~5-6 hours
+**Last Updated**: December 1, 2025
 
 ### Velocity Table
 
 | Phase | Estimated | Actual | Notes |
 |-------|-----------|--------|-------|
-| 1 | 6-8h | ~5h (in progress) | Cell & Board complete |
+| 1 | 6-8h | ~5-6h ✅ | Cell, Board & FileReader complete |
 | 2 | 6-8h | - | - |
 | 3 | 8-10h | - | - |
 | 4 | 10-12h | - | - |
@@ -372,6 +391,9 @@ ruby_sudoku_solver/
 5. **Modular workflow**: One feature at a time with tests
 6. **Box calculation**: Automatic from row/col (user request)
 7. **Method names**: `candidate?` not `has_candidate?`, `value=` not `set_value` (Ruby conventions)
+8. **Test files**: Use temporary directories (`Dir.mktmpdir`) instead of puzzles/ directory
+9. **Empty cells**: Non-1-9 characters converted to '0' during parsing
+10. **File format flexibility**: Support both single-line (81 chars) and multi-line (9×9) formats with comment lines ignored
 
 ### Future Enhancements
 
